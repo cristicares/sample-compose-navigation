@@ -26,13 +26,6 @@ fun PetsScreen(
     onBackIconClick: () -> Unit
 ) {
 
-    val poiosList = listOf(
-        "\uD83D\uDC08\u200D⬛ Dalita",
-        "\uD83D\uDC05 Clementina",
-        "\uD83D\uDC30 Fideo",
-        "\uD83E\uDD9D Simonita"
-    )
-
     Surface(
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
@@ -53,14 +46,13 @@ fun PetsScreen(
                 )
             }
 
-
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                items(poiosList) {
+                items(data.values.toList()) {pet ->
                     Text(
                         modifier = Modifier.padding(vertical = 4.dp),
-                        text = it
+                        text = "${pet.emoji} ${pet.name}"
                     )
                 }
             }
