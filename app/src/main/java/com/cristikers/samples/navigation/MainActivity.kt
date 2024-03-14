@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -29,7 +30,8 @@ fun SampleApp(){
 
         Scaffold(
             topBar = { },
-            bottomBar = { }
+            bottomBar = { },
+            modifier = Modifier.padding(10.dp)
         ) { innerPadding ->
 
             NavHost(
