@@ -29,6 +29,7 @@ import com.cristikers.samples.navigation.ui.theme.SampleTheme
 @Composable
 fun PetsScreen(
     onBackIconClick: () -> Unit,
+    onItemClick: (petId: String) -> Unit
 ) {
     val petMap = remember { Data.petMap }
 
@@ -48,7 +49,7 @@ fun PetsScreen(
                 Text(
                     text = "Mis mascotas",
                     style = MaterialTheme.typography.headlineSmall,
-                    modifier = Modifier.padding(bottom = 4.dp)
+                    modifier = Modifier.padding(bottom = 8.dp)
                 )
             }
 
@@ -61,15 +62,14 @@ fun PetsScreen(
                             .fillMaxWidth()
                             .border(1.dp, Color.Gray, shape = RectangleShape)
                     ) {
-                        TextButton(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+                        TextButton(onClick = { onItemClick(pet.name) }, modifier = Modifier.fillMaxWidth()) {
                             Text(
                                 modifier = Modifier.padding(vertical = 8.dp),
-                                text = "${pet.emoji} ${pet.name}"
+                                text = "${pet.emoji} ${pet.name}",
+                                style = MaterialTheme.typography.bodyLarge
                             )
                         }
-
                     }
-
                 }
             }
         }
@@ -81,6 +81,6 @@ fun PetsScreen(
 @Composable
 fun PetsScreenPreview() {
     SampleTheme {
-        PetsScreen {}
+        PetsScreen({}, {})
     }
 }
