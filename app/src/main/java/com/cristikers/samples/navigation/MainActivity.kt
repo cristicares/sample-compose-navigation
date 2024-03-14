@@ -12,6 +12,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.cristikers.samples.navigation.ui.home.HomeScreen
+import com.cristikers.samples.navigation.ui.pets.PetsScreen
 import com.cristikers.samples.navigation.ui.theme.SampleTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun SampleApp(){
+fun SampleApp() {
     SampleTheme {
         val navController = rememberNavController()
 
@@ -40,7 +41,12 @@ fun SampleApp(){
                 modifier = Modifier.padding(innerPadding)
             ) {
                 composable(route = "home") {
-                    HomeScreen()
+                    HomeScreen(
+                        onButtonClick = { navController.navigate("pets") }
+                    )
+                }
+                composable(route = "pets") {
+                    PetsScreen()
                 }
             }
 
