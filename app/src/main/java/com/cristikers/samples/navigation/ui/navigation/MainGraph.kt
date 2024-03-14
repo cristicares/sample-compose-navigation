@@ -24,7 +24,9 @@ fun NavGraphBuilder.mainGraph(
             )
         }
         composable(route = petsScreen) {
-            PetsScreen()
+            PetsScreen(
+                onBackIconClick = { navController.popBackStack() }
+            )
         }
     }
 }
