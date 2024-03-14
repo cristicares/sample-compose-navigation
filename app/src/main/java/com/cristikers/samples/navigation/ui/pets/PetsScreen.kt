@@ -1,5 +1,6 @@
 package com.cristikers.samples.navigation.ui.pets
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,17 +15,20 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.cristikers.samples.navigation.ui.theme.SampleTheme
 
 @Composable
 fun PetsScreen(
-    onBackIconClick: () -> Unit
+    onBackIconClick: () -> Unit,
 ) {
     val petMap = remember { Data.petMap }
 
@@ -51,11 +55,21 @@ fun PetsScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                items(petMap.values.toList()) {pet ->
-                    Text(
-                        modifier = Modifier.padding(vertical = 4.dp),
-                        text = "${pet.emoji} ${pet.name}"
-                    )
+                items(petMap.values.toList()) { pet ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(1.dp, Color.Gray, shape = RectangleShape)
+                    ) {
+                        TextButton(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+                            Text(
+                                modifier = Modifier.padding(vertical = 8.dp),
+                                text = "${pet.emoji} ${pet.name}"
+                            )
+                        }
+
+                    }
+
                 }
             }
         }
