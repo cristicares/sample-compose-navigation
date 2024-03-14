@@ -15,6 +15,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,6 +26,7 @@ import com.cristikers.samples.navigation.ui.theme.SampleTheme
 fun PetsScreen(
     onBackIconClick: () -> Unit
 ) {
+    val petMap = remember { Data.petMap }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -49,7 +51,7 @@ fun PetsScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
             ) {
-                items(data.values.toList()) {pet ->
+                items(petMap.values.toList()) {pet ->
                     Text(
                         modifier = Modifier.padding(vertical = 4.dp),
                         text = "${pet.emoji} ${pet.name}"
@@ -57,8 +59,6 @@ fun PetsScreen(
                 }
             }
         }
-
-
     }
 
 }
